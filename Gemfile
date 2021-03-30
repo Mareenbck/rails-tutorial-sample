@@ -9,6 +9,12 @@ gem 'rails', '~> 6.1.3'
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
+
+gem 'active_storage_validations', '0.9.2'
+gem 'image_processing', '1.12.1'
+gem 'mini_magick', '4.11.0'
+
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 gem 'bootstrap-sass', '3.4.1'
@@ -60,3 +66,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+group :production do
+  gem 'aws-sdk-s3', '1.93.0', require: false
+end

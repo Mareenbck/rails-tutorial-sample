@@ -14,6 +14,7 @@ class User < ApplicationRecord
                        allow_nil: true
 
   has_secure_password
+  has_many :microposts, dependent: :destroy
 
   # Returns the hash digest of the given string.
   def self.digest(string)
@@ -71,6 +72,10 @@ class User < ApplicationRecord
 
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  def feed
+    Micropost.where("user_id = ?", id)
   end
 
   private
